@@ -91,7 +91,7 @@ const f = function (x, y) {
   return x + y;
 };
 
-const f = (x, y) => {
+const f2 = (x, y) => {
   x + y;
 };
 
@@ -103,7 +103,7 @@ var obj = { key1: 'one', key2: 'two' };
 var { key1: newKey1, key2, key3 = 'default key3 value' } = obj;
 
 // 7. Dependency Management
-import MyModule from './RCC';
+//import MyModule from './RCC';
 
 //8. Array function
 function parse(qs) {
@@ -163,7 +163,7 @@ const work2 = () => {
     setTimeout(() => resolve('작업2 완료'), 200);
   });
 };
-const work2 = () => {
+const work3 = () => {
   new Promise((resolve) => {
     setTimeout(() => resolve('작업3 완료'), 300);
   });
@@ -177,14 +177,63 @@ const nextWorkOnDone = (msg1) => {
   return work2();
 };
 
-work1()
-  .then(nextWorkOnDone)
-  .then((msg2) => {
-    console.log('done after 200ms: ' + msg2);
-    return work3();
-  })
-  .then((msg3) => {
-    console.log('done after 600ms:' + msg3);
-  });
+// work1()
+//   .then(nextWorkOnDone)
+//   .then((msg2) => {
+//     console.log('done after 200ms: ' + msg2);
+//     return work3();
+//   })
+//   .then((msg3) => {
+//     console.log('done after 600ms:' + msg3);
+//   });
 
-urgentWork();
+// urgentWork();
+
+// 10-1. Debounce
+function debounce(func, delay) {
+  let inDebounce;
+  return function (...args) {
+    if (inDebounce) {
+      clearTimeout(inDebounce);
+    }
+    inDebounce = setTimeout(() => func(...args), delay);
+  };
+}
+
+const run = debounce((val) => console.log(val), 100);
+run('a');
+run('b');
+run(2);
+
+// 10-2. Throttle
+function throttle(func, delay) {
+  let lastFunc;
+  let lastRun;
+  return function (...args) {
+    const context = this;
+    if (!lastRun) {
+      func.call(context, ...args);
+      lastRun = Date.now();
+    } else {
+    }
+    if (lastFunc) clearTimeout(lastFunc);
+    lastFunc = setTimeout(function () {
+      if (Date.now() - lastRun >= delay) {
+        func.call(context, ...args);
+        lastRun = Date.now();
+      }
+    }, delay - (Date.now() - lastRun));
+  };
+}
+
+var checkPosition = () => {
+  const offset = 500;
+  const currentScrollPosition = window.pageYOffset;
+  const pageBottomPosition =
+    document.body.offsetHeight - window.innerHeight - offset;
+  if (currentScrollPosition >= pageBottomPosition) {
+    console.log('다음 페이지 로딩');
+  }
+};
+var infiniteScroll = throttle(checkPosition, 300);
+window.addEventListener('scroll', infiniteScroll);
