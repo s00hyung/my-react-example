@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import LifeCycleExample from './example/State/LifeCycleExample';
-import StateExampleCounter from './example/State/StateExampleCounter';
+import Input from './example/State/Input';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <LifeCycleExample />
+        <Input />
       </div>
     );
   }

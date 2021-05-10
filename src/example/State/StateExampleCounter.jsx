@@ -14,7 +14,7 @@ class StateExampleCounter extends Component {
   increaseCount() {
     this.setState(({ count }) => ({ count: count + 1 }));
   }
-
+ 
   render() {
     return (
       <div>
