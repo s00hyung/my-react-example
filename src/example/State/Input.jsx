@@ -13,7 +13,6 @@ class Input extends PureComponent {
       onChange(name, e.target.value);
     }
   }
-
   componentDidMount() {
     if (this.props.autoFocus) {
       this.ref.focus();
