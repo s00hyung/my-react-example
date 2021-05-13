@@ -1,4 +1,4 @@
-import { configure, setAddon } from '@storybook/react';
+import { configure } from '@storybook/react';
 import interopRequiredDefault from 'babel-runtime/helpers/interopRequireDefault';
 
 function loadStories() {
