@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 
 class App extends Component {
   render() {
-    return (
-      <div>
-        <nav>
-          <div className="nav-wrapper">
-            <div>두잇! 리액트 시작하기</div>
-          </div>
-        </nav>
-        <h1>머터리얼 CSS</h1>
-      </div>
-    );
+    const equation = (a, b, c) => (x) => x * a * b + c;
+    const formula = equation(2, 3, 4);
+    const x = 10;
+    const result = formula(x);
+    return <div>{result}</div>;
   }
 }
 
