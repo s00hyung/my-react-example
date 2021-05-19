@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import Input from '../example/Style/InputWithStyle';
-import withError from '../example/hoc/withError';
+import withError from '../example/Hoc/withError';
 
 const InputWithError = withError('올바르지 못한 값입니다')(Input);
 

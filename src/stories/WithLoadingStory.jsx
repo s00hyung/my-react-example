@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import Button from '../example/Style/Button';
 import Text from '../example/Style/Text';
-import withLoading from '../example/hoc/withLoading';
+import withLoading from '../example/Hoc/withLoading';
 
 const TextWithLoading = withLoading('로딩중')(Text);
 const ButtonWithLoading = withLoading(<Button disabled>로딩중...</Button>)(
