@@ -28,6 +28,7 @@ export default {
     white: '#FFFFFF',
     gray: '#CCCCCC',
     default: '#999999',
+    error: '#ff2222',
   },
   size: {
     xg: 24,
